@@ -94,6 +94,7 @@ proc cr_bd_riscv_pe { parentCell lmem } {
   variable project_name
   variable cache
   variable maxi_ports
+  variable moddir
   # CHANGE DESIGN NAME HERE
   set design_name ${project_name}
 
@@ -144,7 +145,11 @@ proc cr_bd_riscv_pe { parentCell lmem } {
   
   source common/connect_common_ports.tcl
   
-  
+  # Connect modules
+  if { ${moddir} ne "" } {
+  source common/add_module.tcl
+  }
+    
   # Create address segments
   source common/common_addr_segments.tcl
   
